@@ -1,0 +1,28 @@
+.utility_container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  width: 500px;
+  height: 100px;
+}
+
+.utility_item {
+  box-sizing: border-box;
+  height: 104px;
+}
+
+.utility_hover {
+  border-bottom: 4px solid #e9853a;
+}
+.utility_hover__name {
+  color: #000 !important;
+}
+.utility_item__name {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 300;
+  font-size: medium;
+  color: #5a5a5a;
+  padding: 24px 5px 5px 5px;
+}

@@ -1,0 +1,20 @@
+.product_counter__container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f7f8fd;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.product_counter__controls {
+  padding: 5px 16px;
+}
+.product_counter__controls:hover {
+  cursor: pointer;
+}
+
+.product_counter {
+  padding: 0px 10px 0px 10px;
+}

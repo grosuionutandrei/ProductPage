@@ -1,0 +1,10 @@
+.product_discount {
+  color: #d8894e;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: large;
+  width: auto;
+  height: auto;
+  background-color: #eabf9f;
+  border-radius: 10px;
+}

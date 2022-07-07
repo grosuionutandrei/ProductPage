@@ -1,0 +1,38 @@
+.product_description__container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 1px solid black;
+}
+
+.product_description__price {
+  width: calc(960px / 8);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 0;
+}
+.product_title {
+  color: #d8894e;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.product_subtitle {
+  width: 450px;
+  height: fit-content;
+  text-align: start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: xxx-large;
+  line-height: 1;
+  margin: 3px 0px 5px 0px;
+}
+
+.product_add__container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
