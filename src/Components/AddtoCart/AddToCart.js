@@ -26,6 +26,10 @@ export const AddToCart = (props) => {
   };
 
   const handleMouseUp = () => {
+    trey();
+  };
+
+  const trey = () => {
     setIsClicked(false);
     props.isClicked(false);
     props.getAdded(false);

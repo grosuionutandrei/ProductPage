@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const CartContext = createContext();
 
 export const CartContextProvider = (props) => {
+  // change to use ref
   const [quantity, setQuantity] = useState(0);
   const [productImage, setProductImage] = useState('');
   const [price, setPrice] = useState(0);
@@ -11,8 +12,6 @@ export const CartContextProvider = (props) => {
   const saveCart = window.localStorage;
 
   useEffect(() => {
-    console.log(quantity);
-    console.log(product);
     if (quantity > 0) {
       setTimeout(addToCart(product, price, quantity), 0);
     }
@@ -31,23 +30,22 @@ export const CartContextProvider = (props) => {
       console.log('cart initialized');
       return;
     }
+
     const tempCart = JSON.parse(cart);
-    console.log(name, price, pieces);
-
-    for (const elem of tempCart) {
-      console.log(elem.product === name);
-      if (elem.product !== name) {
-        tempCart.push({ product: name, cost: price, quantity: pieces });
-        saveCart.setItem('cart', JSON.stringify(tempCart));
-        console.log(`added ${tempCart}`);
-        return;
+    if (tempCart.length > 0) {
+      for (const elem of tempCart) {
+        if (elem.product === name) {
+          elem.quantity = elem.quantity + pieces;
+          saveCart.setItem('cart', JSON.stringify(tempCart));
+          console.log(`modified ${elem} `);
+          return;
+        }
       }
-
-      elem.quantity = elem.quantity + pieces;
-      saveCart.setItem('cart', JSON.stringify(tempCart));
-      console.log(`modified ${elem} `);
-      return;
     }
+
+    tempCart.push({ product: name, cost: price, quantity: pieces });
+    saveCart.setItem('cart', JSON.stringify(tempCart));
+    console.log(`added ${tempCart}`);
   }
 
   const getQuantity = (value) => {
@@ -66,10 +64,6 @@ export const CartContextProvider = (props) => {
     setProduct(value);
   };
 
-  // console.log(quantity);
-  // console.log(product);
-  // console.log(productImage);
-
   return (
     <CartContext.Provider
       value={{
@@ -80,6 +74,8 @@ export const CartContextProvider = (props) => {
         getPrice,
         price,
         getProduct,
+        product,
+        saveCart,
       }}
     >
       {props.children}

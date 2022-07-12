@@ -1,0 +1,82 @@
+.empty_cart {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 94px;
+}
+.cart_container {
+  position: absolute;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+  top: 121px;
+  right: 170px;
+  width: 300px;
+  height: auto;
+  box-shadow: 2px 2px 2px 2px black;
+  z-index: 100;
+  background-color: snow;
+}
+
+.cart_title {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #e9853a;
+  width: 300px;
+  height: 50px;
+}
+.cart_notEmpty {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+}
+
+.product_title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: small;
+  font-weight: 100;
+  margin: 0px 0px;
+}
+.product_price {
+  margin: 0px 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: smal;
+  font-weight: 100;
+}
+.product_total__price {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.cart_product__thumbnail {
+  width: 35px;
+  height: 35px;
+}
+
+.cart_checkout {
+  width: 280px;
+  height: 35px;
+  background-color: #e9853a;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.cart_checkout:hover {
+  cursor: pointer;
+}
+
+[alt='remove logo']:hover {
+  cursor: pointer;
+}
+
+.cart_hide {
+  display: none;
+}

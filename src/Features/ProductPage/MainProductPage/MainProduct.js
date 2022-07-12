@@ -16,7 +16,7 @@ export const MainProduct = () => {
     return () => {};
   }, [isAdded]);
 
-  let name = 'Fall Limited Edition9 Sneakers';
+  let name = 'Fall Limited Edition Sneakers';
 
   const getSource = (value) => {
     setImageSource(value);
