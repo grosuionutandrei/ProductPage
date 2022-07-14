@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import cart from '../../files/images/icon-menu.svg';
 import style from './AddToCart.module.css';
+import { useCartContexProvider } from '../GeneralContext/GeneralContext';
 export const AddToCart = (props) => {
   const [isClicked, setIsClicked] = useState(false);
   const addToCart = useRef(null);
   const addName = useRef(null);
-
+  const { setModifyCart } = useCartContexProvider();
   useEffect(() => {
     isClicked
       ? (addToCart.current.className = `${style.product_add__container__clicked}`)
       : (addToCart.current.className = `${style.product_add__container}`);
-    isClicked
-      ? (addName.current.className = `${style.product_add__text__hover}`)
-      : (addName.current.className = `${style.product_add__text}`);
+
+    // isClicked
+    //   ? (addName.current.className = `${style.product_add__text__hover}`)
+    //   : (addName.current.className = `${style.product_add__text}`);
 
     // isClicked ? props.isClicked(true) : props.isClicked(false);
 
@@ -23,16 +24,14 @@ export const AddToCart = (props) => {
     setIsClicked(true);
     props.isClicked(true);
     props.getAdded(true);
+    setModifyCart(true);
   };
 
   const handleMouseUp = () => {
-    trey();
-  };
-
-  const trey = () => {
     setIsClicked(false);
     props.isClicked(false);
     props.getAdded(false);
+    setModifyCart(false);
   };
 
   return (
@@ -42,12 +41,7 @@ export const AddToCart = (props) => {
       onMouseDown={handleMouse}
       onMouseUp={handleMouseUp}
     >
-      <p
-        ref={addName}
-        className={style.product_add__text}
-        onMouseDown={handleMouse}
-        onMouseUp={handleMouseUp}
-      >
+      <p ref={addName} className={style.product_add__text}>
         Add to cart
       </p>
     </button>

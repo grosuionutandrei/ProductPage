@@ -1,5 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Background } from '../Components/LightBox/BackGround';
+import { LightBox } from '../Components/LightBox/LightBox';
 import { Navigation } from '../Navigation/Navigation';
 
 export const Home = (props) => {
@@ -11,6 +13,7 @@ export const Home = (props) => {
   return (
     <>
       <Navigation />
+      <LightBox />
       <Outlet style={style} />
     </>
   );

@@ -12,3 +12,11 @@
   width: 75px;
   height: 62px;
 }
+
+.shoping_profile:hover {
+  cursor: pointer;
+}
+
+.shoping_container > img:hover {
+  cursor: pointer;
+}

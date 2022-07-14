@@ -5,11 +5,9 @@ export const ShoppingCartNavigation = (props) => {
   const [showCart, setShowCart] = useState(false);
 
   const handleShowCart = () => {
-    console.log(showCart, 'before');
     if (showCart === false) {
       setShowCart(true);
     } else {
-      console.log(showCart, 'clicked');
       setShowCart(false);
     }
   };

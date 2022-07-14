@@ -1,14 +1,19 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 const CartContext = createContext();
 
 export const CartContextProvider = (props) => {
-  // change to use ref
   const [quantity, setQuantity] = useState(0);
   const [productImage, setProductImage] = useState('');
   const [price, setPrice] = useState(0);
   const [product, setProduct] = useState('');
-
+  const [addedToCart, setAddedToCart] = useState('');
   const saveCart = window.localStorage;
 
   useEffect(() => {
@@ -18,8 +23,6 @@ export const CartContextProvider = (props) => {
     return () => {};
   }, [quantity]);
 
-  // modifica clasa butonului de add to basket din cauza ca se micsoreaza prea mult si nu mai merge eventul de on click
-
   function addToCart(name, price, pieces) {
     const cart = saveCart.getItem('cart');
     if (cart === null) {
@@ -27,7 +30,6 @@ export const CartContextProvider = (props) => {
         'cart',
         JSON.stringify([{ product: name, cost: price, quantity: pieces }])
       );
-      console.log('cart initialized');
       return;
     }
 
@@ -37,7 +39,6 @@ export const CartContextProvider = (props) => {
         if (elem.product === name) {
           elem.quantity = elem.quantity + pieces;
           saveCart.setItem('cart', JSON.stringify(tempCart));
-          console.log(`modified ${elem} `);
           return;
         }
       }
@@ -45,7 +46,6 @@ export const CartContextProvider = (props) => {
 
     tempCart.push({ product: name, cost: price, quantity: pieces });
     saveCart.setItem('cart', JSON.stringify(tempCart));
-    console.log(`added ${tempCart}`);
   }
 
   const getQuantity = (value) => {
@@ -64,6 +64,10 @@ export const CartContextProvider = (props) => {
     setProduct(value);
   };
 
+  const setModifyCart = (value) => {
+    setAddedToCart(value);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -76,6 +80,8 @@ export const CartContextProvider = (props) => {
         getProduct,
         product,
         saveCart,
+        setModifyCart,
+        addedToCart,
       }}
     >
       {props.children}

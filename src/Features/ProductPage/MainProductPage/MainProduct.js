@@ -16,7 +16,7 @@ export const MainProduct = () => {
     return () => {};
   }, [isAdded]);
 
-  let name = 'Fall Limited Edition Sneakers';
+  let name = 'Fall Limited Edition2 Sneakers';
 
   const getSource = (value) => {
     setImageSource(value);
@@ -24,7 +24,6 @@ export const MainProduct = () => {
   const getIsAdded = (value) => {
     setIAdded(value);
   };
-  console.log(imageSource);
 
   return (
     <div className={style.product_main__container}>

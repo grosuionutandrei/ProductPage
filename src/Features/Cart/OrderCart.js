@@ -12,7 +12,6 @@ export const OrderCart = (props) => {
   useEffect(() => {
     let execute = true;
     if (execute && deleteItem) {
-      console.log('so2ijdohw;enbd');
       const cartProducts = getProducts();
       saveCart.setItem(
         'cart',
@@ -52,7 +51,7 @@ export const OrderCart = (props) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        // body: JSON.stringify(cart),
+        // body: JSON.stringify(cart),   here will be the order products , no server to receive orders yet
       })
         .then((res) => res.json())
         .then((data) => console.log(data));

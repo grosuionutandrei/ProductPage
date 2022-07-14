@@ -7,10 +7,11 @@ import image from '../../files/images/image-product-1-thumbnail.jpg';
 // add event on cart image click
 
 export const Cart = (props) => {
-  const { saveCart } = useCartContexProvider();
+  const { saveCart, addedToCart } = useCartContexProvider();
   const [deleteItem, setDeleteItem] = useState('');
   const [sendOrder, setSendOrder] = useState('');
   const [showCart, setShowCart] = useState(props.handleShowCart);
+  const [addToCart, setAddToCart] = useState('');
   const orderContainer = useRef();
 
   useEffect(() => {
@@ -43,16 +44,16 @@ export const Cart = (props) => {
       );
       setDeleteItem(false);
     }
-
     if (sendOrder) {
       sendOrder();
       setSendOrder(false);
     }
+    tryModifyCart();
 
     return () => {
       execute = false;
     };
-  }, [deleteItem, sendOrder]);
+  }, [deleteItem, sendOrder, addToCart]);
 
   function getProducts() {
     const products = saveCart.getItem('cart');
@@ -61,6 +62,10 @@ export const Cart = (props) => {
     }
     return null;
   }
+
+  const tryModifyCart = () => {
+    setAddToCart(addedToCart);
+  };
 
   const deleteFromCart = (event) => {
     setDeleteItem(event.target.dataset.product);
@@ -90,7 +95,7 @@ export const Cart = (props) => {
 
   const setClass = () => {
     props.setShowCart(false);
-    console.log(orderContainer.current);
+
     if (orderContainer.current.className === 'cart_hide') {
       return 'cart_container';
     }
@@ -98,8 +103,6 @@ export const Cart = (props) => {
   };
 
   setClass();
-
-  console.log(props.handleShowCart);
 
   // controls the cart render (empty and with products)
   const renderCart = () => {
@@ -117,7 +120,7 @@ export const Cart = (props) => {
     return getProducts().map((item) => (
       <article
         key={item.product}
-        className={showCart ? style.cart_container : style.cart_hide}
+        className={style.cart_hide}
         ref={orderContainer}
       >
         <p className={style.cart_title}>Cart</p>

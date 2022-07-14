@@ -6,12 +6,19 @@
   width: calc(960px / 2);
   gap: 20px;
   border: 1px solid black;
+  z-index: 200;
 }
 
 .product_presentation__big {
   width: 352px;
   height: 352px;
   border-radius: 10px;
+}
+
+.product_presentation__big:hover {
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid #d8894e;
 }
 .product_presentation__thumbnail {
   display: flex;

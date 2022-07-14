@@ -1,0 +1,51 @@
+.background_component {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  background-color: #404040;
+  opacity: 0.97;
+  z-index: 100;
+}
+
+.light_box__close {
+  float: right;
+}
+
+.light_box__carusel {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.light_controls {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: -22.5px -22.5px;
+  z-index: 300;
+}
+
+.light_controls__clicked {
+  stroke: #d8894e;
+}
+
+.light_controls:hover {
+  cursor: pointer;
+}
+
+.product_presentation__big {
+  width: 450px;
+  height: 450px;
+  border-radius: 10px;
+}
