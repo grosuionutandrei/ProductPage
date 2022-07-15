@@ -10,13 +10,6 @@ export const AddToCart = (props) => {
     isClicked
       ? (addToCart.current.className = `${style.product_add__container__clicked}`)
       : (addToCart.current.className = `${style.product_add__container}`);
-
-    // isClicked
-    //   ? (addName.current.className = `${style.product_add__text__hover}`)
-    //   : (addName.current.className = `${style.product_add__text}`);
-
-    // isClicked ? props.isClicked(true) : props.isClicked(false);
-
     return () => {};
   }, [isClicked]);
 

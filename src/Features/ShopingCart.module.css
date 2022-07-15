@@ -20,3 +20,16 @@
 .shoping_container > img:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 1200px) {
+  .shoping_profile {
+    width: 35px;
+    height: 30px;
+  }
+  .shoping_container {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+}

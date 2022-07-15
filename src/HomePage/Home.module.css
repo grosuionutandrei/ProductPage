@@ -1,0 +1,17 @@
+.outlet {
+  width: 1200px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .outlet {
+    width: 900px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .outlet {
+    width: 600px;
+  }
+}

@@ -26,3 +26,12 @@
   color: #5a5a5a;
   padding: 24px 5px 5px 5px;
 }
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 900px) {
+  .utility_container {
+    width: 300px;
+  }
+}

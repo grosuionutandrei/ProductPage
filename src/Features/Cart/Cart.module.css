@@ -13,7 +13,6 @@
   justify-content: space-between;
   align-items: center;
   top: 121px;
-  right: 170px;
   width: 300px;
   height: auto;
   box-shadow: 2px 2px 2px 2px black;
@@ -79,4 +78,9 @@
 
 .cart_hide {
   display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .cart_container {
+  }
 }
