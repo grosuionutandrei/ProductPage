@@ -12,21 +12,23 @@ import next from '../../files/images/icon-next.svg';
 import previous from '../../files/images/icon-previous.svg';
 import close from '../../files/images/icon-close.svg';
 import nextOrange from '../../files/images/icon_next_orange.svg';
-
+import previousOrange from '../../files/images/previous_orange.svg';
+import closeOrange from '../../files/images/close_orange.svg';
+import { useCartContexProvider } from '../GeneralContext/GeneralContext';
 import { Background } from './BackGround';
 import lightStyle from './LightBox.module.css';
 
 export const LightBox = (props) => {
+  const { getBigScreen } = useCartContexProvider();
   const bigImages = [productBig1, productBig2, productBig3, productBig4];
   const [isClicked, setIsClicked] = useState(false);
-  //   add on mouse down and on mouse up events to change the stroke color;
+
   const bigImage = useRef(null);
   const index = useRef();
   const nextR = useRef('#1D2026');
   const previousR = useRef();
   const closeR = useRef();
 
-  //  to add use state because i need to rerender the componenet in order to change svg stroke
   const handleClick = (event) => {
     bigImage.current.src = bigImages[event.target.id];
     index.current = event.target.id;
@@ -56,6 +58,44 @@ export const LightBox = (props) => {
     index.current--;
   };
 
+  const handleMouseOver = (event) => {
+    if (event.target.dataset.type === 'next') {
+      nextR.current.src = nextOrange;
+      return;
+    }
+
+    if (event.target.dataset.type === 'previous') {
+      previousR.current.src = previousOrange;
+      return;
+    }
+
+    if (event.target.dataset.type === 'close') {
+      closeR.current.src = closeOrange;
+      return;
+    }
+  };
+
+  const handleMouseLeave = (event) => {
+    if (event.target.dataset.type === 'next') {
+      nextR.current.src = next;
+      return;
+    }
+
+    if (event.target.dataset.type === 'previous') {
+      previousR.current.src = previous;
+      return;
+    }
+
+    if (event.target.dataset.type === 'close') {
+      closeR.current.src = close;
+      return;
+    }
+  };
+
+  const closeWindow = () => {
+    getBigScreen(false);
+  };
+
   return (
     <Background>
       <article className={style.product_presentation__container}>
@@ -63,11 +103,21 @@ export const LightBox = (props) => {
           ref={closeR}
           src={close}
           alt="close logo"
+          data-type="close"
           className={lightStyle.light_box__close}
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+          onClick={closeWindow}
         />
         <section className={lightStyle.light_box__carusel}>
-          <div className={lightStyle.light_controls} onClick={switchNext}>
-            <img ref={nextR} src={next} alt="next logo" />
+          <div
+            className={lightStyle.light_controls}
+            data-type="next"
+            onClick={switchNext}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img ref={nextR} src={next} alt="next logo" data-type="next" />
           </div>
 
           <img
@@ -78,8 +128,19 @@ export const LightBox = (props) => {
             className={lightStyle.product_presentation__big}
           />
 
-          <div className={lightStyle.light_controls} onClick={switchPrevious}>
-            <img ref={previousR} src={previous} alt="previous logo" />
+          <div
+            data-type="previous"
+            className={lightStyle.light_controls}
+            onClick={switchPrevious}
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img
+              ref={previousR}
+              src={previous}
+              alt="previous logo"
+              data-type="previous"
+            />
           </div>
         </section>
 

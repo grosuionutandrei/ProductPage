@@ -8,12 +8,13 @@ import productBig2 from '../../../files/images/image-product-2.jpg';
 import productBig3 from '../../../files/images/image-product-3.jpg';
 import productBig4 from '../../../files/images/image-product-4.jpg';
 import style from './ProductPresentation.module.css';
-import { LightBox } from '../../../Components/LightBox/LightBox';
+
+import { useCartContexProvider } from '../../../Components/GeneralContext/GeneralContext';
 
 export const ProductPresentation = (props) => {
+  const { getBigScreen } = useCartContexProvider();
   const bigImages = [productBig1, productBig2, productBig3, productBig4];
   const [isClicked, setIsClicked] = useState(false);
-  const [showLightBox, setShowLightBox] = useState(false);
   const bigImage = useRef(null);
 
   const handleClick = (event) => {
@@ -23,12 +24,11 @@ export const ProductPresentation = (props) => {
   };
 
   const handleLightBox = () => {
-    setShowLightBox(true);
+    getBigScreen(true);
   };
 
   return (
     <>
-      {showLightBox && <LightBox />}
       <article className={style.product_presentation__container}>
         <img
           ref={bigImage}

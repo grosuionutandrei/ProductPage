@@ -7,14 +7,21 @@
   top: 0px;
   right: 0px;
   bottom: 0px;
-
   background-color: #404040;
   opacity: 0.97;
   z-index: 100;
 }
 
 .light_box__close {
-  float: right;
+  box-sizing: border-box;
+  align-self: end;
+  padding: 10px 10px;
+  margin-right: 10px;
+  margin-bottom: -10px;
+}
+
+.light_box__close:hover {
+  cursor: pointer;
 }
 
 .light_box__carusel {

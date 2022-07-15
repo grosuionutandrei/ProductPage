@@ -14,6 +14,8 @@ export const CartContextProvider = (props) => {
   const [price, setPrice] = useState(0);
   const [product, setProduct] = useState('');
   const [addedToCart, setAddedToCart] = useState('');
+  const [bigScreen, setBigScreen] = useState(false);
+
   const saveCart = window.localStorage;
 
   useEffect(() => {
@@ -68,6 +70,10 @@ export const CartContextProvider = (props) => {
     setAddedToCart(value);
   };
 
+  const getBigScreen = (value) => {
+    setBigScreen(value);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -82,6 +88,8 @@ export const CartContextProvider = (props) => {
         saveCart,
         setModifyCart,
         addedToCart,
+        bigScreen,
+        getBigScreen,
       }}
     >
       {props.children}
