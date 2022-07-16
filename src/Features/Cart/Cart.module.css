@@ -16,7 +16,7 @@
   width: 300px;
   height: auto;
   box-shadow: 2px 2px 2px 2px black;
-  z-index: 100;
+  z-index: 90;
   background-color: snow;
 }
 
@@ -82,5 +82,8 @@
 
 @media screen and (max-width: 1200px) {
   .cart_container {
+    position: fixed;
+
+    right: 20px;
   }
 }

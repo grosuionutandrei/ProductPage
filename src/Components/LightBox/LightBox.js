@@ -19,7 +19,7 @@ import { Background } from './BackGround';
 import lightStyle from './LightBox.module.css';
 
 export const LightBox = (props) => {
-  const { getBigScreen } = useCartContexProvider();
+  const { getBigScreen, mainImage } = useCartContexProvider();
   const bigImages = [productBig1, productBig2, productBig3, productBig4];
   const [isClicked, setIsClicked] = useState(false);
 
@@ -95,7 +95,7 @@ export const LightBox = (props) => {
   const closeWindow = () => {
     getBigScreen(false);
   };
-
+  console.log(mainImage);
   return (
     <Background>
       <article className={style.product_presentation__container}>
@@ -123,7 +123,7 @@ export const LightBox = (props) => {
           <img
             ref={bigImage}
             id="bigImage"
-            src={productBig1}
+            src={bigImages[Number(mainImage.current) - 1]}
             alt="snickers big"
             className={lightStyle.product_presentation__big}
           />

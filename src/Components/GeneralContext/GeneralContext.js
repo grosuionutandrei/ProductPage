@@ -15,6 +15,7 @@ export const CartContextProvider = (props) => {
   const [product, setProduct] = useState('');
   const [addedToCart, setAddedToCart] = useState('');
   const [bigScreen, setBigScreen] = useState(false);
+  const mainImage = useRef();
 
   const saveCart = window.localStorage;
 
@@ -74,6 +75,10 @@ export const CartContextProvider = (props) => {
     setBigScreen(value);
   };
 
+  const getBigImageValue = (value) => {
+    mainImage.current = value;
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -90,6 +95,8 @@ export const CartContextProvider = (props) => {
         addedToCart,
         bigScreen,
         getBigScreen,
+        mainImage,
+        getBigImageValue,
       }}
     >
       {props.children}

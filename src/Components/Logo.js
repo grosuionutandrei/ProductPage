@@ -1,16 +1,6 @@
 import React from 'react';
+import style from './Logo.module.css';
 
 export const Logo = (props) => {
-  const style = {
-    width: '100px',
-    height: '34px',
-  };
-  return (
-    <img
-      src={props.src}
-      alt={props.alt}
-      className={props.className}
-      style={style}
-    />
-  );
+  return <img src={props.src} alt={props.alt} className={style.logo} />;
 };

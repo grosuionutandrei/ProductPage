@@ -27,11 +27,19 @@
   padding: 24px 5px 5px 5px;
 }
 
-@media screen and (max-width: 1200px) {
-}
-
 @media screen and (max-width: 900px) {
   .utility_container {
     width: 300px;
   }
+  .utility_item__name {
+    font-weight: 300;
+    font-size: small;
+    padding: 24px 8px 5px 5px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* .utility_item__name {
+    padding: 24px 8px 5px 5px;
+  } */
 }

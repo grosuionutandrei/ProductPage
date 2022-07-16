@@ -44,4 +44,13 @@
     width: 225px;
     font-weight: 400;
   }
+
+  .product_description__container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product_add__container {
+    padding-bottom: 20px;
+  }
 }

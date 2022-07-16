@@ -12,18 +12,20 @@ import style from './ProductPresentation.module.css';
 import { useCartContexProvider } from '../../../Components/GeneralContext/GeneralContext';
 
 export const ProductPresentation = (props) => {
-  const { getBigScreen } = useCartContexProvider();
+  const { getBigScreen, getBigImageValue } = useCartContexProvider();
   const bigImages = [productBig1, productBig2, productBig3, productBig4];
   const [isClicked, setIsClicked] = useState(false);
   const bigImage = useRef(null);
 
   const handleClick = (event) => {
     bigImage.current.src = bigImages[event.target.id - 1];
+    bigImage.current.dataset.big = event.target.id;
     props.setImageSource(bigImages[event.target.id - 1]);
     setIsClicked(true);
   };
 
-  const handleLightBox = () => {
+  const handleLightBox = (event) => {
+    getBigImageValue(event.target.dataset.big);
     getBigScreen(true);
   };
 
@@ -32,6 +34,7 @@ export const ProductPresentation = (props) => {
       <article className={style.product_presentation__container}>
         <img
           ref={bigImage}
+          data-big="1"
           id="bigImage"
           src={productBig1}
           alt="snickers big"
